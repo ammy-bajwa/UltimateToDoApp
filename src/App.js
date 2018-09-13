@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import Input from "./Components/TodoInput";
+import List from "./Components/TodosList";
+
+import { postTodo, updateTodos, deleteTodos } from "./actions";
 // import logo from './logo.svg';
 import "./App.css";
 
@@ -9,12 +14,29 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Todo List</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Input
+          onSubmit={todo => {
+            this.props.dispatch(postTodo(todo));
+            console.log(todo);
+          }}
+        />
+        <List
+          todos={this.props.todos}
+          handleCheck={(checked, id) => {
+            this.props.dispatch(updateTodos(checked, id));
+          }}
+          handleDelete={id => {
+            this.props.dispatch(deleteTodos(id));
+          }}
+        />
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);
