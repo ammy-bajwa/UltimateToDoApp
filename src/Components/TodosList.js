@@ -6,8 +6,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
+import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import { DeleteForeverRounded } from "@material-ui/icons";
+import DeleteForeverRounded from "@material-ui/icons/DeleteForeverRounded";
 
 const styles = theme => ({
   root: {
@@ -40,26 +41,31 @@ class CheckboxList extends React.Component {
       <div className={classes.root}>
         <List>
           {this.props.todos.map(item => (
-            <ListItem key={item.id} dense button className={classes.listItem}>
-              <Checkbox
-                checked={item.checked}
-                tabIndex={-1}
-                disableRipple
-                onChange={e => this.handleCheckChange(e, item.checked, item.id)}
-              />
-              <ListItemText
-                primary={`${item.todo}`}
-                className={item.checked && classes.disabed}
-              />
-              <ListItemSecondaryAction>
-                <IconButton
-                  aria-label="Comments"
-                  onClick={e => this._handleDelete(e, item.id)}
-                >
-                  <DeleteForeverRounded />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
+            <div key={item.id}>
+              <ListItem dense button className={classes.listItem}>
+                <Checkbox
+                  checked={item.checked}
+                  tabIndex={-1}
+                  disableRipple
+                  onChange={e =>
+                    this.handleCheckChange(e, item.checked, item.id)
+                  }
+                />
+                <ListItemText
+                  primary={`${item.todo}`}
+                  className={item.checked && classes.disabed}
+                />
+                <ListItemSecondaryAction>
+                  <IconButton
+                    aria-label="Comments"
+                    onClick={e => this._handleDelete(e, item.id)}
+                  >
+                    <DeleteForeverRounded />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+              <Divider />
+            </div>
           ))}
         </List>
       </div>

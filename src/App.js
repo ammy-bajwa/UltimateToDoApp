@@ -14,21 +14,25 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Todo List</h1>
         </header>
-        <Input
-          onSubmit={todo => {
-            this.props.dispatch(postTodo(todo));
-            console.log(todo);
-          }}
-        />
-        <List
-          todos={this.props.todos}
-          handleCheck={(checked, id) => {
-            this.props.dispatch(updateTodos(checked, id));
-          }}
-          handleDelete={id => {
-            this.props.dispatch(deleteTodos(id));
-          }}
-        />
+        <div className="App-Body">
+          <div>
+            <Input
+              onSubmit={todo => {
+                this.props.dispatch(postTodo(todo));
+                console.log(todo);
+              }}
+            />
+            <List
+              todos={this.props.todos}
+              handleCheck={(checked, id) => {
+                this.props.dispatch(updateTodos(checked, id));
+              }}
+              handleDelete={id => {
+                this.props.dispatch(deleteTodos(id));
+              }}
+            />
+          </div>
+        </div>
       </div>
     );
   }

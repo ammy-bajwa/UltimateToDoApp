@@ -1,6 +1,9 @@
 {
   "name": "todo",
   "version": "0.1.0",
+  "author": {
+    "name": "Mohsin Latif"
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.0.3",
