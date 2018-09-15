@@ -32,5 +32,19 @@ export class Routes {
             });
         }
       });
+
+    app.route("/api/todos/:id").put((req: Request, res: Response) => {
+      Todo.findOneAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        { new: true },
+        (err, ad) => {
+          if (err) {
+            res.send(err);
+          }
+          res.status(400).json(ad);
+        }
+      );
+    });
   }
 }

@@ -81,8 +81,10 @@ describe("api/todos", () => {
 
   //PUT endpoint tests
   describe("PUT api/todos/:id", () => {
-    it("Should return 200 OK", async () => {
-      let result = await request(server).put(`/api/todos/todo._id`);
+    it("Should return 200 OK on Update", async () => {
+      let result = await request(server)
+        .put(`/api/todos/todo._id`)
+        .send({ done: true });
       expect(result.status).toBe(200);
     });
   });
