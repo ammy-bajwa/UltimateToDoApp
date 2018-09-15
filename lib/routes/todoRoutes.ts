@@ -33,18 +33,29 @@ export class Routes {
         }
       });
 
-    app.route("/api/todos/:id").put((req: Request, res: Response) => {
-      Todo.findOneAndUpdate(
-        { _id: req.params.id },
-        req.body,
-        { new: true },
-        (err, ad) => {
-          if (err) {
-            res.send(err);
+    app
+      .route("/api/todos/:id")
+      .put((req: Request, res: Response) => {
+        Todo.findOneAndUpdate(
+          { _id: req.params.id },
+          req.body,
+          { new: true },
+          (err, todo) => {
+            if (err) {
+              res.send(err);
+            }
+            res.status(400).json(todo);
           }
-          res.status(400).json(ad);
-        }
-      );
-    });
+        );
+      })
+      .delete((req: Request, res: Response) => {
+        Todo.remove({ _id: req.params.adId })
+          .then(result => {
+            res.status(200).send(result);
+          })
+          .catch(err => {
+            res.status(400).send(err);
+          });
+      });
   }
 }
