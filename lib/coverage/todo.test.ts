@@ -41,12 +41,18 @@ describe("api/todos", () => {
   });
 
   //POST endpoint tests
-  describe("GET api/todos", () => {
+  describe("POST api/todos", () => {
     it("Should return 200 OK", async () => {
       let result = await request(server)
         .post("/api/todos")
         .send(todoItem);
       expect(result.status).toBe(200);
+    });
+    it("Should return the body", async () => {
+      let result = await request(server)
+        .post("/api/todos")
+        .send(todoItem);
+      expect(result.body.title).toBe("Buy Some Milk");
     });
   });
 
@@ -54,7 +60,7 @@ describe("api/todos", () => {
 
   //DELETE endpoint tests
   afterEach(async () => {
-    server.close();
+    await server.close();
     await Todo.remove({});
   });
 });
