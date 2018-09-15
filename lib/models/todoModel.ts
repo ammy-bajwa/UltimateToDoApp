@@ -7,7 +7,7 @@ export const ContactSchema = new Schema({
     type: String,
     required: "Please write a todo"
   },
-  checked: {
+  completed: {
     type: Boolean
   },
   created_date: {
