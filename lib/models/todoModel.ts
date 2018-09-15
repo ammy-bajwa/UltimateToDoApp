@@ -2,16 +2,16 @@ import * as mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const ContactSchema = new Schema({
-  todo: {
+export const TodoSchema = new Schema({
+  title: {
     type: String,
-    required: "Please write a todo"
+    required: "Please write a title"
   },
-  completed: {
+  description: {
+    type: String,
+    required: "Please write a description"
+  },
+  done: {
     type: Boolean
-  },
-  created_date: {
-    type: Date,
-    default: Date.now
   }
 });
