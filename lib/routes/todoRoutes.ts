@@ -12,8 +12,24 @@ export class Routes {
         res.status(200).send("Hello from the API");
       })
       .post((req: Request, res: Response) => {
-        if (req.body.title) {
-          res.status(200).json({ message: "POST" });
+        if (!req.body.title) {
+          res.status(400).send({ error: "Please Enter a title" });
+        } else if (!req.body.description) {
+          res.status(400).send({ error: "Please Enter a title" });
+        } else {
+          let todo = new Todo({
+            title: req.body.title,
+            description: req.body.description,
+            done: req.body.done
+          });
+          todo
+            .save()
+            .then(result => {
+              res.send(result);
+            })
+            .catch(err => {
+              res.status(400).send({ err });
+            });
         }
       });
   }
