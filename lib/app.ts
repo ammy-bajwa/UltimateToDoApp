@@ -1,10 +1,11 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as mongoose from "mongoose";
+import { Routes } from "./routes/todoRoutes";
 
 class App {
   public app: express.Application;
-  // public route: Routes = new Routes();
+  public route: Routes = new Routes();
 
   public mongoUrl: string =
     "mongodb://admin:Mohsin60@ds257732.mlab.com:57732/todo-api";
