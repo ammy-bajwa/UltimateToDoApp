@@ -5,7 +5,7 @@ import { Routes } from "./routes/todoRoutes";
 
 class App {
   public app: express.Application;
-  public route: Routes = new Routes();
+  public todoRoute: Routes = new Routes();
 
   public mongoUrl: string =
     "mongodb://admin:Mohsin60@ds257732.mlab.com:57732/todo-api";
@@ -13,7 +13,7 @@ class App {
   constructor() {
     this.app = express();
     this.config();
-    // this.routePrv.routes(this.app);
+    this.todoRoute.routes(this.app);
     this.mongoSetup();
   }
 
