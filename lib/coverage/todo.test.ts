@@ -90,6 +90,13 @@ describe("api/todos", () => {
   });
 
   //DELETE endpoint tests
+  describe("DELETE api/todos/:id", () => {
+    it("Should return 200 OK on Delete", async () => {
+      let result = await request(server).delete(`/api/todos/todo._id`);
+      expect(result.status).toBe(200);
+    });
+  });
+
   afterEach(async () => {
     await server.close();
     await Todo.remove({});
