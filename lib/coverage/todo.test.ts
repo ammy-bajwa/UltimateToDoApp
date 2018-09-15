@@ -42,17 +42,40 @@ describe("api/todos", () => {
 
   //POST endpoint tests
   describe("POST api/todos", () => {
-    it("Should return 200 OK", async () => {
+    it("Should return 400 error", async () => {
       let result = await request(server)
         .post("/api/todos")
-        .send(todoItem);
-      expect(result.status).toBe(200);
+        .send({
+          id: todoId,
+          description: "Some Description: buy from Hassan dairy",
+          done: true
+        });
+      expect(result.status).toBe(400);
+    });
+    it("Should return 400 error", async () => {
+      let result = await request(server)
+        .post("/api/todos")
+        .send({
+          id: todoId,
+          title: "some title",
+          done: true
+        });
+      expect(result.status).toBe(400);
     });
     it("Should return the body", async () => {
       let result = await request(server)
         .post("/api/todos")
         .send(todoItem);
       expect(result.body.title).toBe("Buy Some Milk");
+      expect(result.body.description).toBe(
+        "Some Description: buy from Hassan dairy"
+      );
+    });
+    it("Should return 200 OK", async () => {
+      let result = await request(server)
+        .post("/api/todos")
+        .send(todoItem);
+      expect(result.status).toBe(200);
     });
   });
 
