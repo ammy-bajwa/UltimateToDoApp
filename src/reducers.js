@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
         if (todo.id === action.id) {
           return {
             ...todo,
-            checked: !todo.checked
+            done: !todo.done
           };
         } else {
           return todo;

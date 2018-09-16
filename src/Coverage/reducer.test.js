@@ -32,7 +32,7 @@ describe("Todo Reducer", () => {
     expect(result).toEqual(state);
   });
 
-  it("Should add the expense", () => {
+  it("Should add the todo", () => {
     let todoItem = {
       id: "4",
       title: "some new title",
@@ -47,5 +47,23 @@ describe("Todo Reducer", () => {
       ...state,
       todos: [todoItem, ...state.todos]
     });
+  });
+
+  it("Should Update the todo by id", () => {
+    let done = true;
+    const result = todoReducer(state, {
+      type: "UPDATE_TODO",
+      id: todos[0].id
+    });
+    expect(result.todos[0].done).toEqual(!state.todos[0].done);
+  });
+
+  it("Should not Update the todo", () => {
+    let done = true;
+    const result = todoReducer(state, {
+      type: "UPDATE_TODO",
+      id: "7"
+    });
+    expect(result).toEqual(state);
   });
 });
