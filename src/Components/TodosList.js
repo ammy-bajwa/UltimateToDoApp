@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -51,10 +51,12 @@ class CheckboxList extends React.Component {
                     this.handleCheckChange(e, item.checked, item.id)
                   }
                 />
-                <ListItemText
-                  primary={`${item.todo}`}
-                  className={item.checked && classes.disabed}
-                />
+                {
+                  <ListItemText
+                    primary={`${item.todo}`}
+                    className={item.checked ? classes.disabed : ""}
+                  />
+                }
                 <ListItemSecondaryAction>
                   <IconButton
                     aria-label="Comments"
@@ -72,9 +74,5 @@ class CheckboxList extends React.Component {
     );
   }
 }
-
-CheckboxList.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(CheckboxList);

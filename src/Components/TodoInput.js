@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { Input, Button } from "@material-ui/core";
 
@@ -36,7 +35,6 @@ class Inputs extends React.Component {
       <div className={classes.container}>
         <form onSubmit={this._handleSubmit}>
           <Input
-            defaultValue="Hello world"
             className={classes.input}
             value={this.state.todo}
             onChange={this._handleChange("todo")}
@@ -50,9 +48,5 @@ class Inputs extends React.Component {
     );
   }
 }
-
-Inputs.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(Inputs);
