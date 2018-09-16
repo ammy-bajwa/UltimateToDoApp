@@ -21,12 +21,7 @@ export default (state = initialState, action) => {
       return { ...state, isLoading: false };
 
     case POST_TODO:
-      let todo = {
-        id: uuid(),
-        todo: action.payload,
-        checked: false
-      };
-      return { ...state, todos: [todo, ...state.todos] };
+      return { ...state, todos: [action.payload, ...state.todos] };
     case UPDATE_TODO:
       let todosMap = state.todos.map(todo => {
         if (todo.id === action.id) {
