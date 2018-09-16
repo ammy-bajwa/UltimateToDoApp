@@ -10,17 +10,16 @@
   height: 10px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 20px;
-  color: white;
-}
-
 .App-title {
   font-size: 1.5em;
 }
-
+.app-logo-text {
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+  padding: 2rem 4rem 1rem;
+  font-family: roboto;
+  font-weight: 400;
+}
 .App-intro {
   font-size: large;
 }

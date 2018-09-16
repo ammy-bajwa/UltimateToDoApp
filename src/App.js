@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Input from "./Components/TodoInput";
 import List from "./Components/TodosList";
+import Header from "./Components/Header";
+import TodoItem from "./Components/TodoItem";
 
 import { postTodo, updateTodos, deleteTodos } from "./actions";
 // import logo from './logo.svg';
@@ -11,24 +13,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Todo List</h1>
-        </header>
         <div className="App-Body">
           <div>
+            <Header />
             <Input
               onSubmit={todo => {
                 this.props.dispatch(postTodo(todo));
-                console.log(todo);
               }}
             />
             <List
               todos={this.props.todos}
               handleCheck={(checked, id) => {
                 this.props.dispatch(updateTodos(checked, id));
-              }}
-              handleDelete={id => {
-                this.props.dispatch(deleteTodos(id));
               }}
             />
           </div>
