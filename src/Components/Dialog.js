@@ -64,9 +64,4 @@ class ResponsiveDialog extends React.Component {
     );
   }
 }
-
-ResponsiveDialog.propTypes = {
-  fullScreen: PropTypes.bool.isRequired
-};
-
 export default withStyles(styles)(withMobileDialog()(ResponsiveDialog));

@@ -143,8 +143,4 @@ class TodoItem extends React.Component {
   }
 }
 
-TodoItem.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
 export default connect()(withStyles(styles)(TodoItem));
