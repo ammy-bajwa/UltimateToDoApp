@@ -9,7 +9,13 @@ export class Routes {
     app
       .route("/api/todos")
       .get((req: Request, res: Response) => {
-        res.status(200).send("Hello from the API");
+        Todo.find({})
+          .then(result => {
+            res.status(200).send(result);
+          })
+          .catch(err => {
+            res.status(404).send(err);
+          });
       })
       .post((req: Request, res: Response) => {
         if (!req.body.title) {
