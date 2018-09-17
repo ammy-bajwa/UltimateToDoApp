@@ -3,14 +3,15 @@ import {
   GET_TODOS,
   POST_TODO,
   DELETE_TODO,
-  UPDATE_TODO
+  UPDATE_TODO,
+  GET_ERRORS
 } from "./types";
-import uuid from "uuid/v4";
 
 // Todos Reducer
 const initialState = {
   todos: [],
-  isLoading: false
+  isLoading: false,
+  error: ""
 };
 
 export default (state = initialState, action) => {
@@ -18,18 +19,13 @@ export default (state = initialState, action) => {
     case IS_LOADING:
       return { ...state, isLoading: true };
     case GET_TODOS:
-      return { ...state, isLoading: false };
+      return { ...state, todos: action.payload };
 
     case POST_TODO:
-      const todo = {
-        id: uuid(),
-        title: action.payload.title,
-        description: action.payload.description
-      };
-      return { ...state, todos: [todo, ...state.todos] };
+      return { ...state, todos: [action.payload, ...state.todos] };
     case UPDATE_TODO:
       let todosMap = state.todos.map(todo => {
-        if (todo.id === action.id) {
+        if (todo._id === action._id) {
           return {
             ...todo,
             done: !todo.done
@@ -40,8 +36,10 @@ export default (state = initialState, action) => {
       });
       return { ...state, todos: [...todosMap] };
     case DELETE_TODO:
-      let todos = state.todos.filter(({ id }) => id !== action.id);
+      let todos = state.todos.filter(({ _id }) => _id !== action._id);
       return { ...state, todos };
+    case GET_ERRORS:
+      return { ...state, error: action.payload };
     default:
       return state;
   }
