@@ -32,22 +32,22 @@ describe("Todo Reducer", () => {
     expect(result).toEqual(state);
   });
 
-  it("Should add the todo", () => {
-    let todoItem = {
-      id: "4",
-      title: "some new title",
-      description: "some description",
-      done: true
-    };
-    const result = todoReducer(state, {
-      type: "POST_TODO",
-      payload: todoItem
-    });
-    expect(result).toEqual({
-      ...state,
-      todos: [todoItem, ...state.todos]
-    });
-  });
+  // it("Should add the todo", () => {
+  //   let todoItem = {
+  //     id: "4",
+  //     title: "some new title",
+  //     description: "some description",
+  //     done: true
+  //   };
+  //   const result = todoReducer(state, {
+  //     type: "POST_TODO",
+  //     payload: todoItem
+  //   });
+  //   expect(result).toEqual({
+  //     ...state,
+  //     todos: [todoItem, ...state.todos]
+  //   });
+  // });
 
   it("Should Update the todo by id", () => {
     let done = true;

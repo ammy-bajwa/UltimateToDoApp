@@ -8,92 +8,63 @@ exports[`Snapshots of React Components Should Match Header Snapshot 1`] = `
 </h1>
 `;
 
-exports[`Snapshots of React Components Should TodoInput Header Snapshot 1`] = `
-<div
-  className="MuiPaper-root-05 MuiPaper-elevation2-09 MuiPaper-rounded-06 Inputs-paper-04"
->
-  <form
-    className="Inputs-container-01"
-    onSubmit={[Function]}
-  >
-    <div
-      className="MuiInput-root-032 MuiInput-fullWidth-039 MuiInput-underline-036 Inputs-input-02"
-    >
-      <input
-        aria-invalid={undefined}
-        aria-label="Title"
-        autoComplete={undefined}
-        autoFocus={undefined}
-        className="MuiInput-input-040"
-        defaultValue={undefined}
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onKeyDown={undefined}
-        onKeyUp={undefined}
-        placeholder="Write the todo title"
-        readOnly={undefined}
-        required={undefined}
-        rows={undefined}
-        type="text"
-        value=""
-      />
-    </div>
-    <div
-      className="MuiInput-root-032 MuiInput-fullWidth-039 MuiInput-multiline-038 MuiInput-underline-036 Inputs-input-02"
-    >
-      <textarea
-        aria-invalid={undefined}
-        aria-label="Description"
-        autoComplete={undefined}
-        autoFocus={undefined}
-        className="MuiInput-input-040 MuiInput-inputMultiline-042"
-        defaultValue={undefined}
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onKeyDown={undefined}
-        onKeyUp={undefined}
-        placeholder="Write the description about what needs to be done"
-        readOnly={undefined}
-        required={undefined}
-        rows="3"
-        type="text"
-        value=""
-      />
-    </div>
-    
-    <button
-      className="MuiButtonBase-root-071 MuiButton-root-045 MuiButton-text-047 MuiButton-textSecondary-049 MuiButton-flat-050 MuiButton-flatSecondary-052 Inputs-Button-03"
-      disabled={false}
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="submit"
-    >
-      <span
-        className="MuiButton-label-046"
-      >
-        Add todo
-      </span>
-      <span
-        className="MuiTouchRipple-root-074"
-      />
-    </button>
-  </form>
-</div>
+exports[`Snapshots of React Components Should Match TodoInput Snapshot 1`] = `
+<Inputs
+  classes={
+    Object {
+      "Button": "Inputs-Button-03",
+      "container": "Inputs-container-01",
+      "input": "Inputs-input-02",
+      "paper": "Inputs-paper-04",
+    }
+  }
+/>
+`;
+
+exports[`Snapshots of React Components Should Match TodoItem  Snapshot 1`] = `
+<Connect(WithStyles(TodoItem))
+  description="some description"
+  done={false}
+  id="1"
+  title="title"
+/>
+`;
+
+exports[`Snapshots of React Components Should Match TodoItem  Snapshot 2`] = `
+<WithStyles(Dialog)
+  open={false}
+/>
+`;
+
+exports[`Snapshots of React Components Should Match TodoList  Snapshot 1`] = `
+<CheckboxList
+  classes={
+    Object {
+      "disabed": "CheckboxList-disabed-06",
+      "root": "CheckboxList-root-05",
+    }
+  }
+  todos={
+    Array [
+      Object {
+        "description": "some description",
+        "done": false,
+        "id": "1",
+        "title": "title",
+      },
+      Object {
+        "description": "some description",
+        "done": false,
+        "id": "2",
+        "title": "title",
+      },
+      Object {
+        "description": "some description",
+        "done": false,
+        "id": "3",
+        "title": "title",
+      },
+    ]
+  }
+/>
 `;

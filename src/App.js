@@ -21,12 +21,7 @@ class App extends Component {
                 this.props.dispatch(postTodo(todo));
               }}
             />
-            <List
-              todos={this.props.todos}
-              handleCheck={(checked, id) => {
-                this.props.dispatch(updateTodos(checked, id));
-              }}
-            />
+            <List todos={this.props.todos} />
           </div>
         </div>
       </div>
