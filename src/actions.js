@@ -4,7 +4,7 @@ import {
   POST_TODO,
   DELETE_TODO,
   UPDATE_TODO,
-  GET_ERRORSmodule
+  GET_ERRORS
 } from "./types";
 
 export const getTodos = () => dispatch => {
