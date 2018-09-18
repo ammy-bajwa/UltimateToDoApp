@@ -46,7 +46,7 @@ const styles = theme => ({
   },
   button: {
     color: "#f0925d",
-    fontSize: "16px",
+    fontSize: "14px",
     textTransform: "capitalize",
     background: "rgba(240, 142, 92, 0.08)"
   },
@@ -101,12 +101,12 @@ class TodoItem extends React.Component {
                 component="h3"
                 className={classes.typographyHeader}
               >
-                <span className={props.done && classes.disabled}>
+                <span className={props.done ? classes.disabled : undefined}>
                   {props.title}
                 </span>
               </Typography>
               <Typography component="p" className={classes.typographyPara}>
-                <span className={props.done && classes.disabled}>
+                <span className={props.done ? classes.disabled : undefined}>
                   {props.description}
                 </span>
               </Typography>
