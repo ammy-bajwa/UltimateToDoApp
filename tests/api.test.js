@@ -48,3 +48,17 @@ test("test for Updating a todo", () => {
     }
   );
 });
+test("test for removing a todo", () => {
+  client.remove(
+    {
+      todo_id: 279765 //parseInt(Math.random() * 1000000)
+    },
+    (error, response) => {
+      if (!error) {
+        expect(response).not.toBeNull();
+      } else {
+        console.log("Error:", error.message);
+      }
+    }
+  );
+});
