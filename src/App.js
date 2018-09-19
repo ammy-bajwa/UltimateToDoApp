@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import Input from "./Components/TodoInput";
 import List from "./Components/TodosList";
 import Header from "./Components/Header";
-import TodoItem from "./Components/TodoItem";
 
-import { postTodo, updateTodos, deleteTodos } from "./actions";
+import { postTodo } from "./actions";
 // import logo from './logo.svg';
 import "./App.css";
 
