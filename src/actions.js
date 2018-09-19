@@ -73,9 +73,20 @@ export const deleteTodos = _id => dispatch => {
 };
 
 export const updateTodos = (payload, _id) => dispatch => {
-  dispatch({
-    type: UPDATE_TODO,
-    payload,
-    _id
-  });
+  return database
+    .ref(`/${_id}`)
+    .update({ done: payload })
+    .then(() => {
+      dispatch({
+        type: UPDATE_TODO,
+        payload,
+        _id
+      });
+      console.log(payload);
+    })
+    .catch(error => {
+      if (error) {
+        dispatch({ type: GET_ERRORS, payload: error });
+      }
+    });
 };
