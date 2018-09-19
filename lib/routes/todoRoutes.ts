@@ -91,6 +91,26 @@ export class Routes {
          }
      })
       })
-     
+      .delete((req: Request, res: Response) => {
+
+        var id = req.params.id;
+        console.log(id);
+        pool.connect((err,db,done)=>{
+         if(err){
+             return res.status(404).send(err);
+         }
+         else{           
+             db.query('DELETE FROM todo WHERE id=$1',[id],(err,table) =>{
+                 done();
+                 if(err){
+                     return res.status(404).send(err);
+                 }
+                 else {         
+                     return res.status(200).send({message: 'success in deleting record'});
+                 }
+             })            
+         }
+     })
+      });
   }
 }
