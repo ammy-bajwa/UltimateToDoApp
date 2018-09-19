@@ -4,7 +4,7 @@
   "description": "BootCamp first project with my team theta",
   "main": "index.js",
   "scripts": {
-    "test":"jest --watchAll"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ammy-bajwa/UltimateToDoApp#readme",
   "dependencies": {
+    "grpc": "^1.15.1",
     "jest": "^23.6.0"
   }
 }
