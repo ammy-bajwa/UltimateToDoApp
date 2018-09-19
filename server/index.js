@@ -6,34 +6,50 @@ const server = new grpc.Server();
 const todoServices = require("../db/todo");
 
 server.addService(proto.myTodos.TodosService.service, {
-  Insert(call, callback) {
-    let todo = new todoServices({
-      todo_id: call.request.todo_id,
-      title: call.request.title,
-      description: call.request.description,
-      done: call.request.done
-    });
-    todo.add(call.request);
-  },
   List(call, callback) {
     todoServices.list(callback);
   },
-  update(callback) {
-    const criteria = {
-      todo_id: callback.request.todo_id,
-      title: callback.request.title,
-      description: callback.request.description,
-      done: callback.request.done
+  Insert(call, callback) {
+    let todo = new todoServices({
+      id: call.request.id,
+      title: call.request.title,
+      description: call.request.description,
+      done: call.request.done,
+    });
+    todo.add(call.request);
+  },
+  get(call, callback) {
+    let payload = {
+      criteria: {
+        id: call.request.id
+      },
+      projections: {
+        _id: 0,
+        __v: 0
+      },
+      options: {
+        lean: true
+      }
     };
-    let todo = new todoServices(criteria);
-    todo.updateTodo(criteria, callback);
+    let todo = new todoServices(payload);
+    todo.fetch(callback);
   },
   remove(callback) {
     const criteria = {
-      todo_id: callback.request.todo_id
+      id: callback.request.id
     };
     let todo = new todoServices(criteria);
     todo.remove(criteria, callback);
+  },
+  update(callback) {
+    const criteria = {
+      id: callback.request.id,
+      title: callback.request.title,
+      description: callback.request.description,
+      done: callback.request.done,      
+    };
+    let todo = new todoServices(criteria);
+    todo.updateTodo(criteria, callback);
   }
 });
 

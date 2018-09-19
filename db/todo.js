@@ -3,9 +3,7 @@ let Todo = class {
   constructor(payload) {
     this.payload = payload;
   }
-  add(cb) {
-    new todoModel(this.payload).save(cb);
-  }
+
   static list(cb) {
     const criteria = {};
     const projections = {
@@ -17,16 +15,18 @@ let Todo = class {
     };
     todoModel.find(criteria, projections, options, cb);
   }
-  updateTodo(cb) {
-    const criteria = this.payload;
-    console.log("update Todo ", cb);
-    todoModel
-      .findOneAndUpdate({ todo_id: cb.todo_id }, cb)
-      .then(res => {
-        console.log("findOneAndRemove ", res);
-      })
-      .catch(err => console.log("findOneAndDelete err ", err));
+
+  add(cb) {
+    new todoModel(this.payload).save(cb);
   }
+
+  fetch(cb) {
+    const criteria = this.payload.criteria;
+    const projections = this.payload.projections;
+    const options = this.payload.options;
+    todoModel.find(criteria, projections, options, cb);
+  }
+
   remove(cb) {
     const criteria = this.payload;
     // console.log("in remove method cb", cb, " criteria ", criteria);
@@ -34,6 +34,16 @@ let Todo = class {
       .findOneAndRemove(cb)
       .then(res => {
         // console.log("findOneAndRemove ", res);
+      })
+      .catch(err => console.log("findOneAndDelete err ", err));
+  }
+  updateTodo(cb) {
+    const criteria = this.payload;
+    console.log('update Todo ',cb);
+    todoModel
+      .findOneAndUpdate({id:cb.id},cb)
+      .then(res => {
+        console.log("findOneAndRemove ", res);
       })
       .catch(err => console.log("findOneAndDelete err ", err));
   }

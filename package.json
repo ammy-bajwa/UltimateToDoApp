@@ -1,24 +1,19 @@
 {
-  "name": "part_1_step_3",
+  "name": "node-grpc",
   "version": "1.0.0",
-  "description": "BootCamp first project with my team theta",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --detectOpenHandles"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ammy-bajwa/UltimateToDoApp.git"
-  },
-  "author": "Amir Ali",
+  "author": "Amir",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ammy-bajwa/UltimateToDoApp/issues"
-  },
-  "homepage": "https://github.com/ammy-bajwa/UltimateToDoApp#readme",
   "dependencies": {
     "grpc": "^1.15.1",
-    "jest": "^23.6.0",
     "mongoose": "^5.2.15"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.6.0"
   }
 }

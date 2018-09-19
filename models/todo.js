@@ -4,8 +4,8 @@ const Mongoose = require("mongoose");
  */
 const Schema = Mongoose.Schema;
 let todo = new Schema({
-  todo_id: {
-    type: Number,
+  id: {
+    type: String,
     required: true,
     unique: true
   },
