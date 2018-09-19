@@ -17,5 +17,15 @@ let Todo = class {
     };
     todoModel.find(criteria, projections, options, cb);
   }
+  updateTodo(cb) {
+    const criteria = this.payload;
+    console.log("update Todo ", cb);
+    todoModel
+      .findOneAndUpdate({ todo_id: cb.todo_id }, cb)
+      .then(res => {
+        console.log("findOneAndRemove ", res);
+      })
+      .catch(err => console.log("findOneAndDelete err ", err));
+  }
 };
 module.exports = Todo;

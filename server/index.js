@@ -17,6 +17,16 @@ server.addService(proto.myTodos.TodosService.service, {
   },
   List(call, callback) {
     todoServices.list(callback);
+  },
+  update(callback) {
+    const criteria = {
+      todo_id: callback.request.todo_id,
+      title: callback.request.title,
+      description: callback.request.description,
+      done: callback.request.done
+    };
+    let todo = new todoServices(criteria);
+    todo.updateTodo(criteria, callback);
   }
 });
 
