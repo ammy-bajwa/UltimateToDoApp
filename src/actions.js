@@ -56,10 +56,20 @@ export const postTodo = (formData, history) => dispatch => {
     });
 };
 export const deleteTodos = _id => dispatch => {
-  dispatch({
-    type: DELETE_TODO,
-    _id
-  });
+  return database
+    .ref(`/${_id}`)
+    .remove()
+    .then(payload => {
+      dispatch({
+        type: DELETE_TODO,
+        _id
+      });
+    })
+    .catch(error => {
+      if (error) {
+        dispatch({ type: GET_ERRORS, payload: error });
+      }
+    });
 };
 
 export const updateTodos = (payload, _id) => dispatch => {
