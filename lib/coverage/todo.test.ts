@@ -42,7 +42,15 @@ describe("api/todos", () => {
   });
 
 
-  
+  // POST endpoint tests
+  describe("POST api/todos", () => {
+    it("Should return 200 OK", async () => {
+      let result = await request(server)
+        .post("/api/todos")
+        .send(todoItem);
+      expect(result.status).toBe(200);
+    });
+  });
 
 
   afterEach(async () => {
