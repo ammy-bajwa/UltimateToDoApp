@@ -75,3 +75,5 @@ let update = todo => {
     );
   };
 };
+export { add, remove, update };
+
