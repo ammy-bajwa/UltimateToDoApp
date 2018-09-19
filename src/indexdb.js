@@ -32,3 +32,14 @@ const add = todo => {
     );
   };
 };
+
+let remove = id => {
+  var request = db
+    .transaction(["todo"], "readwrite")
+    .objectStore("todo")
+    .delete(id);
+
+  request.onsuccess = function(event) {
+    console.log("Todo's entry has been removed from your database.");
+  };
+};
