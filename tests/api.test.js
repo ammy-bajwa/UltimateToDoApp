@@ -6,7 +6,7 @@ const client = new proto.myTodos.TodosService(
   grpc.credentials.createInsecure()
 );
 let todoTestId = parseInt(Math.random() * 1000000);
-test("test for adding a todo", (done) => {
+test("test for adding a todo", done => {
   client.Insert(
     {
       todo_id: todoTestId,
@@ -16,10 +16,18 @@ test("test for adding a todo", (done) => {
     },
     (error, response) => {
       if (!error) {
-          
       } else {
         console.log("Error:", error.message);
       }
     }
   );
+});
+test("test for getting all the todos", () => {
+  client.List({}, (error, response) => {
+    if (!error) {
+      expect(response).not.toBeNull();
+    } else {
+      console.log("Error:", error.message);
+    }
+  });
 });
