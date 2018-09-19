@@ -3,22 +3,15 @@ import { connect } from "react-redux";
 import Input from "./Components/TodoInput";
 import List from "./Components/TodosList";
 import Header from "./Components/Header";
-import TodoItem from "./Components/TodoItem";
-import axios from "axios";
-import { getTodos, postTodo, updateTodos, deleteTodos } from "./actions";
+
+import { postTodo, getTodos } from "./actions";
 // import logo from './logo.svg';
 import "./App.css";
-import Axios from "axios";
 
 class App extends Component {
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/")
-      .then(response => {
-        this.props.dispatch(getTodos(response.data.todo));
-      })
-      .catch(err => console.log(err));
-  }
+  componentDidMount = () => {
+    this.props.dispatch(getTodos());
+  };
   render() {
     return (
       <div className="App">

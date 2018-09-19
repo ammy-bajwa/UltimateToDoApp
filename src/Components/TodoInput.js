@@ -3,8 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import uuid from "uuid/v4";
-
+import uuid from "uuid";
 
 const styles = theme => ({
   container: {
@@ -58,10 +57,9 @@ class Inputs extends React.Component {
       this.setState({ error: "Please fill both the feilds" });
     } else if (this.state.title && this.state.description) {
       const todo = {
-        id: uuid(),
         title: this.state.title,
         description: this.state.description,
-        done: false
+        _id: uuid()
       };
       this.props.onSubmit(todo);
       this.setState({ error: "", title: "", description: "" });
