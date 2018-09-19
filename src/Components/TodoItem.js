@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
@@ -47,7 +46,7 @@ const styles = theme => ({
   },
   button: {
     color: "#f0925d",
-    fontSize: "16px",
+    fontSize: "14px",
     textTransform: "capitalize",
     background: "rgba(240, 142, 92, 0.08)"
   },
