@@ -1,0 +1,22 @@
+{
+  "name": "part_1_step_3",
+  "version": "1.0.0",
+  "description": "BootCamp first project with my team theta",
+  "main": "index.js",
+  "scripts": {
+    "test":"jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ammy-bajwa/UltimateToDoApp.git"
+  },
+  "author": "Amir Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ammy-bajwa/UltimateToDoApp/issues"
+  },
+  "homepage": "https://github.com/ammy-bajwa/UltimateToDoApp#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
