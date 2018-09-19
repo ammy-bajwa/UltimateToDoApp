@@ -15,21 +15,8 @@ server.addService(proto.myTodos.TodosService.service, {
     });
     todo.add(call.request);
   },
-  get(call, callback) {
-    let payload = {
-      criteria: {
-        todo_id: call.request.todo_id
-      },
-      projections: {
-        _id: 0,
-        __v: 0
-      },
-      options: {
-        lean: true
-      }
-    };
-    let todo = new todoServices(payload);
-    todo.fetch(callback);
+  List(call, callback) {
+    todoServices.list(callback);
   }
 });
 

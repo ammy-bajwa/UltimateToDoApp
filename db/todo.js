@@ -6,10 +6,15 @@ let Todo = class {
   add(cb) {
     new todoModel(this.payload).save(cb);
   }
-  fetch(cb) {
-    const criteria = this.payload.criteria;
-    const projections = this.payload.projections;
-    const options = this.payload.options;
+  static list(cb) {
+    const criteria = {};
+    const projections = {
+      _id: 0,
+      __v: 0
+    };
+    const options = {
+      lean: true
+    };
     todoModel.find(criteria, projections, options, cb);
   }
 };
