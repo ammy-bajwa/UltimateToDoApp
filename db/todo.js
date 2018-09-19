@@ -27,5 +27,15 @@ let Todo = class {
       })
       .catch(err => console.log("findOneAndDelete err ", err));
   }
+  remove(cb) {
+    const criteria = this.payload;
+    // console.log("in remove method cb", cb, " criteria ", criteria);
+    todoModel
+      .findOneAndRemove(cb)
+      .then(res => {
+        // console.log("findOneAndRemove ", res);
+      })
+      .catch(err => console.log("findOneAndDelete err ", err));
+  }
 };
 module.exports = Todo;
