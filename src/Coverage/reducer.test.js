@@ -2,23 +2,21 @@ import todoReducer from "../reducers";
 import todos from "./todos";
 let state = {
   isLoading: false,
-  todos: todos
+  todos
 };
 describe("Todo Reducer", () => {
   it("Should set default state", () => {
     const result = todoReducer(undefined, { type: "@@INIT" });
     expect(result).toEqual({
       todos: [],
-      isLoading: false,
-      error: ""
+      isLoading: false
     });
   });
 
-
-  it("Should Remove the ToDo with id", () => {
+  it("Should Remove the expense with id", () => {
     const result = todoReducer(state, {
       type: "DELETE_TODO",
-      _id: state.todos[1]._id
+      id: state.todos[1].id
     });
     expect(result).toEqual({
       todos: [todos[0], todos[2]],
@@ -26,10 +24,10 @@ describe("Todo Reducer", () => {
     });
   });
 
-  it("Should not Remove the ToDo if id is Invalid", () => {
+  it("Should not Remove the expense if id is Invalid", () => {
     const result = todoReducer(state, {
       type: "DELETE_TODO",
-      _id: "5"
+      id: "5"
     });
     expect(result).toEqual(state);
   });
@@ -55,7 +53,7 @@ describe("Todo Reducer", () => {
     let done = true;
     const result = todoReducer(state, {
       type: "UPDATE_TODO",
-      _id: todos[0]._id
+      id: todos[0].id
     });
     expect(result.todos[0].done).toEqual(!state.todos[0].done);
   });
@@ -64,7 +62,7 @@ describe("Todo Reducer", () => {
     let done = true;
     const result = todoReducer(state, {
       type: "UPDATE_TODO",
-      _id: "7"
+      id: "7"
     });
     expect(result).toEqual(state);
   });

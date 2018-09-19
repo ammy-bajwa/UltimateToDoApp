@@ -24,7 +24,7 @@ class CheckboxList extends React.Component {
               title={item.title}
               description={item.description}
               done={item.done}
-              _id={item._id}
+              id={item.id}
             />
           </div>
         ))}

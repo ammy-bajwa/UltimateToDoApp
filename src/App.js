@@ -3,15 +3,16 @@ import { connect } from "react-redux";
 import Input from "./Components/TodoInput";
 import List from "./Components/TodosList";
 import Header from "./Components/Header";
-
-import { postTodo, getTodos } from "./actions";
+import TodoItem from "./Components/TodoItem";
+import axios from "axios";
+import { getTodos, postTodo, updateTodos, deleteTodos } from "./actions";
 // import logo from './logo.svg';
 import "./App.css";
+import Axios from "axios";
 
 class App extends Component {
-  componentDidMount = () => {
-    this.props.dispatch(getTodos());
-  };
+  componentDidMount() {
+  }
   render() {
     return (
       <div className="App">

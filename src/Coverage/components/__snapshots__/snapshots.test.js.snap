@@ -25,6 +25,7 @@ exports[`Snapshots of React Components Should Match TodoItem  Snapshot 1`] = `
 <Connect(WithStyles(TodoItem))
   description="some description"
   done={false}
+  id="1"
   title="title"
 />
 `;
@@ -46,21 +47,21 @@ exports[`Snapshots of React Components Should Match TodoList  Snapshot 1`] = `
   todos={
     Array [
       Object {
-        "_id": "1",
         "description": "some description",
         "done": false,
+        "id": "1",
         "title": "title",
       },
       Object {
-        "_id": "2",
         "description": "some description",
         "done": false,
+        "id": "2",
         "title": "title",
       },
       Object {
-        "_id": "3",
         "description": "some description",
         "done": false,
+        "id": "3",
         "title": "title",
       },
     ]

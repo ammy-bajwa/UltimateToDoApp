@@ -82,12 +82,18 @@ class TodoItem extends React.Component {
     this.setState({ open: false });
   };
   handleDelete = () => {
-    this.props.dispatch(deleteTodos(this.props._id));
-    console.log(this.props._id);
+    this.props.dispatch(deleteTodos(this.props.id));
     this.setState({ open: false });
   };
   handleCheck = () => {
-    this.props.dispatch(updateTodos(!this.props.done, this.props._id));
+    console.log(this.props);
+    let todo = {
+      id: this.props.id,
+      title: this.props.title,
+      description: this.props.description,
+      done: !this.props.done
+    };
+    this.props.dispatch(updateTodos(todo));
   };
   render() {
     const props = this.props;
