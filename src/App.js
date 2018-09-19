@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Input from "./Components/TodoInput";
 import List from "./Components/TodosList";
 import Header from "./Components/Header";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { postTodo, getTodos } from "./actions";
 // import logo from './logo.svg';
@@ -13,6 +14,11 @@ class App extends Component {
     this.props.dispatch(getTodos());
   };
   render() {
+    let content = this.props.loading ? (
+      <CircularProgress />
+    ) : (
+      <List todos={this.props.todos} />
+    );
     return (
       <div className="App">
         <div className="App-Body">
@@ -23,7 +29,7 @@ class App extends Component {
                 this.props.dispatch(postTodo(todo));
               }}
             />
-            <List todos={this.props.todos} />
+            {content}
           </div>
         </div>
       </div>
@@ -32,7 +38,8 @@ class App extends Component {
 }
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    loading: state.isLoading
   };
 };
 
