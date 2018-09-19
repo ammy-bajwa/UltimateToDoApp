@@ -43,7 +43,17 @@ export const postTodo = (formData, history) => dispatch => {
     ...formData,
     done: false
   };
-  dispatch({ type: POST_TODO, payload: todo });
+  return database
+    .ref(`/${todo._id}`)
+    .set(todo)
+    .then(() => {
+      dispatch({ type: POST_TODO, payload: todo });
+    })
+    .catch(error => {
+      if (error) {
+        dispatch({ type: GET_ERRORS, payload: error });
+      }
+    });
 };
 export const deleteTodos = _id => dispatch => {
   dispatch({
