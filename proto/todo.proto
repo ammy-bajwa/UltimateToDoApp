@@ -6,6 +6,7 @@ package myTodos; //Optional: unique package name.
 service TodosService {
   rpc Insert (Todo) returns (Empty);
   rpc List (Empty) returns (TodoList);
+  rpc Update (Todo) returns (Empty);
 }
 
 // Message Type definition for an Employee.
