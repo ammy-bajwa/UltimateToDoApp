@@ -6,10 +6,36 @@ import {
   UPDATE_TODO,
   GET_ERRORS
 } from "./types";
+import * as firebase from "firebase";
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBT76zvy4lpAQLMRStOrvfMgU1Elv3I5Zo",
+  authDomain: "ultimate-todo-app-4c6f6.firebaseapp.com",
+  databaseURL: "https://ultimate-todo-app-4c6f6.firebaseio.com",
+  projectId: "ultimate-todo-app-4c6f6",
+  storageBucket: "ultimate-todo-app-4c6f6.appspot.com",
+  messagingSenderId: "113954197207"
+};
+firebase.initializeApp(config);
+const database = firebase.database();
 
 export const getTodos = () => dispatch => {
   let todos = [];
-  dispatch({ type: GET_TODOS, todos });
+  database
+    .ref("/")
+    .once("value")
+    .then(snapShot => {
+      snapShot.forEach(ss => {
+        todos.push(ss.val());
+      });
+      dispatch({ type: GET_TODOS, todos });
+    })
+    .catch(error => {
+      if (error) {
+        dispatch({ type: GET_ERRORS, payload: error });
+      }
+    });
 };
 
 export const postTodo = (formData, history) => dispatch => {
