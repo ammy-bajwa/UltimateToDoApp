@@ -6,5 +6,11 @@ let Todo = class {
   add(cb) {
     new todoModel(this.payload).save(cb);
   }
+  fetch(cb) {
+    const criteria = this.payload.criteria;
+    const projections = this.payload.projections;
+    const options = this.payload.options;
+    todoModel.find(criteria, projections, options, cb);
+  }
 };
 module.exports = Todo;
