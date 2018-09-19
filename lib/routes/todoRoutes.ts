@@ -6,6 +6,9 @@ const Todo = mongoose.model("todo", TodoSchema);
 
 export class Routes {
   public routes(app): void {
+    app.route("/").get((req: Request, res: Response) => {
+      res.send({ Success: "API is working" });
+    });
     app
       .route("/api/todos")
       .get((req: Request, res: Response) => {
