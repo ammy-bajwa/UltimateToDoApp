@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ammy-bajwa/UltimateToDoApp#readme",
   "dependencies": {
     "grpc": "^1.15.1",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "mongoose": "^5.2.15"
   }
 }
