@@ -13,6 +13,26 @@ let pool = new pg.Pool({
 
 export class Routes {
   public routes(app): void {
-    
+    app
+      .route("/api/todos")
+      .get((req: Request, res: Response) => {
+        pool.connect((err,db,done)=>{
+          if(err){
+              return res.status(404).send(err);
+          }
+          else{           
+              db.query('select* from todo',(err,table) =>{
+                  done();
+                  if(err){
+                      return res.status(404).send(err);
+                  }
+                  else {         
+                      res.status(200).send(table.rows);
+                  }
+              })            
+          }
+      })
+      })
+      
   }
 }
