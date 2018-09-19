@@ -65,5 +65,32 @@ export class Routes {
         }
       });
 
-     }
+    app
+      .route("/api/todos/:id")
+      .put((req: Request, res: Response) => {
+        
+        let title = req.body.title;
+        let description = req.body.description;
+        var id = req.params.id;
+        let done = false;  
+        let values = [id,title,description,done];       
+        pool.connect((err,db,done)=>{
+         if(err){
+             return res.status(404).send(err);
+         }
+         else{           
+             db.query('UPDATE todo SET title=($2),description=($3),done=($4) WHERE id=($1)',[...values],(err,table) =>{
+                 done();
+                 if(err){
+                     return res.status(404).send(err);
+                 }
+                 else {         
+                     return res.status(200).send({message: 'update success record'});
+                 }
+             })            
+         }
+     })
+      })
+     
+  }
 }
