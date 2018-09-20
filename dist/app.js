@@ -4,10 +4,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const todoRoutes_1 = require("./routes/todoRoutes");
+const config = require("./config/config");
 class App {
     constructor() {
         this.todoRoute = new todoRoutes_1.Routes();
-        this.mongoUrl = "mongodb://admin:Mohsin60@ds257732.mlab.com:57732/todo-api";
+        this.mongoUrl = config.dbUrl;
         this.app = express();
         this.config();
         this.todoRoute.routes(this.app);
