@@ -1,0 +1,19 @@
+{
+  "name": "node-grpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles"
+  },
+  "author": "Amir",
+  "license": "ISC",
+  "dependencies": {
+    "grpc": "^1.15.1",
+    "mongoose": "^5.2.15"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.6.0"
+  }
+}

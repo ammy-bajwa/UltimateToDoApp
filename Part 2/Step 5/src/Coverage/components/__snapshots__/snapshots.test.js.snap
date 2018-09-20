@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots of React Components Should Match Header Snapshot 1`] = `
+<h1
+  className="app-logo-text"
+>
+  Ultimate Todo App
+</h1>
+`;
+
+exports[`Snapshots of React Components Should Match TodoInput Snapshot 1`] = `
+<Inputs
+  classes={
+    Object {
+      "Button": "Inputs-Button-03",
+      "container": "Inputs-container-01",
+      "input": "Inputs-input-02",
+      "paper": "Inputs-paper-04",
+    }
+  }
+/>
+`;
+
+exports[`Snapshots of React Components Should Match TodoItem  Snapshot 1`] = `
+<Connect(WithStyles(TodoItem))
+  description="some description"
+  done={false}
+  id="1"
+  title="title"
+/>
+`;
+
+exports[`Snapshots of React Components Should Match TodoItem  Snapshot 2`] = `
+<WithStyles(Dialog)
+  open={false}
+/>
+`;
+
+exports[`Snapshots of React Components Should Match TodoList  Snapshot 1`] = `
+<CheckboxList
+  classes={
+    Object {
+      "disabed": "CheckboxList-disabed-06",
+      "root": "CheckboxList-root-05",
+    }
+  }
+  todos={
+    Array [
+      Object {
+        "description": "some description",
+        "done": false,
+        "id": "1",
+        "title": "title",
+      },
+      Object {
+        "description": "some description",
+        "done": false,
+        "id": "2",
+        "title": "title",
+      },
+      Object {
+        "description": "some description",
+        "done": false,
+        "id": "3",
+        "title": "title",
+      },
+    ]
+  }
+/>
+`;

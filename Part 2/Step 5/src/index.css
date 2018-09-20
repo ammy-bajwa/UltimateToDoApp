@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-image: url(../src/assets/images/Desktop@2x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0% 15%;
+  background-color: #fef8f2;
+}
+span.MuiTypography-root-0189.MuiTypography-body1-0198.MuiFormControlLabel-label-0219 {
+  color: rgb(240, 142, 89) !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.46429em;
+}

@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+}
+.App-Body {
+  display: flex;
+  justify-content: center;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 10px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+.app-logo-text {
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+  padding: 2rem 4rem 1rem;
+  font-family: roboto;
+  font-weight: 400;
+}
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
