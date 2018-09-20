@@ -10,7 +10,7 @@ The Theta team is lead by Amir Sadiq Ali and consists of the following members:
 5. Muhammad Suleman
 6. Hassan Naseer
 
-1. Part 1 Step 1 Done By Mohsun Latif 
+1. Part 1 Step 1 Done By Mohsin Latif 
 2. Part 1 Step 2 Done By Hamza Yousaf
 3. Part 1 Step 3 Done By Amir Sadiq Ali
 4. Part 2 Step 1 Done By Mohsin Latif
