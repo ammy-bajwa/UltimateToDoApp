@@ -5,7 +5,7 @@ import {
   DELETE_TODO,
   UPDATE_TODO
 } from "./types";
-import axios from "axios";
+import { add, dell, update } from "./dbConnections";
 export const getTodos = payload => {
   return {
     type: GET_TODOS,
@@ -14,17 +14,7 @@ export const getTodos = payload => {
 };
 
 export const postTodo = payload => {
-  axios
-    .post("http://localhost:3000/add", {
-      todo: payload
-    })
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      // handle error
-      console.log(error);
-    });
+  add(payload);
   return {
     type: POST_TODO,
     payload
@@ -32,19 +22,7 @@ export const postTodo = payload => {
 };
 
 export const deleteTodos = id => {
-  console.log("id del todo", id);
-  axios
-    .delete("http://localhost:3000/delete", {
-      data: {
-        id: id
-      }
-    })
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  dell(id);
   return {
     type: DELETE_TODO,
     id
@@ -52,16 +30,7 @@ export const deleteTodos = id => {
 };
 
 export const updateTodos = payload => {
-  axios
-    .put("http://localhost:3000/update", {
-      payload
-    })
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  update(payload);
   return {
     type: UPDATE_TODO,
     payload
