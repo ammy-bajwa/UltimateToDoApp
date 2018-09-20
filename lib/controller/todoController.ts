@@ -2,91 +2,59 @@ import * as mongoose from "mongoose";
 import { Request, Response } from "express";
 
 import { TodoSchema } from "../models/todoModel";
+import { todoDB } from "../database/db";
 
 const Todo = mongoose.model("todo", TodoSchema);
 
 export class todoController {
   /**
+   * todoDB
+   */
+  public todoDB: todoDB = new todoDB();
+  /**
    * getTodo
    */
-  public getTodo = (req: Request, res: Response) => {
-    Todo.find({})
-      .then(result => {
-        res.status(200).send(result);
-      })
-      .catch(err => {
-        res.status(404).send(err);
-      });
+  public getTodo = async (req: Request, res: Response) => {
+    const todos = await this.todoDB.getAll();
+    res.json(todos);
   };
 
   /**
    * postTodo
    */
-  public postTodo = (req: Request, res: Response) => {
+  public postTodo = async (req: Request, res: Response) => {
     if (!req.body.title) {
       res.status(400).send({ error: "Please Enter a title" });
     } else if (!req.body.description) {
       res.status(400).send({ error: "Please Enter a description" });
     } else {
-      let todo = new Todo({
-        title: req.body.title,
-        description: req.body.description,
-        done: req.body.done
-      });
-      todo
-        .save()
-        .then(result => {
-          res.send(result);
-        })
-        .catch(err => {
-          res.status(400).send({ err });
-        });
+      let result = await this.todoDB.saveTodo(req.body);
+
+      res.send(result);
     }
   };
 
   /**
    * getSingleTodo
    */
-  public getSingleTodo = (req: Request, res: Response) => {
-    Todo.find({ _id: req.params.id })
-      .then(result => {
-        res.status(200).send(result);
-      })
-      .catch(err => {
-        res.status(404).send(err);
-      });
+  public getSingleTodo = async (req: Request, res: Response) => {
+    let result = await this.todoDB.findSingleTodo(req.params.id);
+    res.send(result);
   };
 
   /**
    * updateTodo
    */
-  public updateTodo = (req: Request, res: Response) => {
-    Todo.findOneAndUpdate(
-      { _id: req.params.id },
-      req.body,
-      { new: true },
-      (err, todo) => {
-        if (err) {
-          res.send(err);
-        }
-        res.status(200).json(todo);
-      }
-    );
+  public updateTodo = async (req: Request, res: Response) => {
+    let result = await this.todoDB.FindAndUpdateTodo(req.body, req.params.id);
+    res.send(result);
   };
 
   /**
    * deleteTodo
    */
-  public deleteTodo(req: Request, res: Response) {
-    Todo.remove({ _id: req.params.id })
-      .then(result => {
-        res.status(200).send({
-          message: "Item delete with Id",
-          _id: req.params.id
-        });
-      })
-      .catch(err => {
-        res.status(400).send(err);
-      });
-  }
+  public deleteTodo = async (req: Request, res: Response) => {
+    let result = await this.todoDB.removeTodo(req.params.id);
+    res.send(result);
+  };
 }

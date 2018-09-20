@@ -26,14 +26,7 @@ class App {
     }
     mongoSetup() {
         mongoose.Promise = global.Promise;
-        mongoose
-            .connect(process.env.MONGODB_URI || this.mongoUrl)
-            .then(result => {
-            console.log(result);
-        })
-            .catch(err => {
-            console.log(err);
-        });
+        mongoose.connect(process.env.MONGODB_URI || this.mongoUrl);
     }
 }
 exports.default = new App().app;
