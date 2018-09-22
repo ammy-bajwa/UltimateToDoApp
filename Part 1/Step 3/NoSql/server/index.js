@@ -13,24 +13,24 @@ server.addService(proto.myTodos.TodosService.service, {
       description: call.request.description,
       done: call.request.done
     });
-    todo.add(call.request);
+    todo.add(callback);
   },
   List(call, callback) {
     todoServices.list(callback);
   },
-  update(callback) {
+  update(call,callback) {
     const criteria = {
-      todo_id: callback.request.todo_id,
-      title: callback.request.title,
-      description: callback.request.description,
-      done: callback.request.done
+      todo_id: call.request.todo_id,
+      title: call.request.title,
+      description: call.request.description,
+      done: call.request.done
     };
     let todo = new todoServices(criteria);
     todo.updateTodo(criteria, callback);
   },
-  remove(callback) {
+  remove(call,callback) {
     const criteria = {
-      todo_id: callback.request.todo_id
+      todo_id: call.request.todo_id
     };
     let todo = new todoServices(criteria);
     todo.remove(criteria, callback);

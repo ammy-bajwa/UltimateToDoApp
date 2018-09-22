@@ -1,5 +1,4 @@
 const grpc = require("grpc");
-
 const protoPath = require("path").join(__dirname, "../..", "proto");
 const proto = grpc.load({ root: protoPath, file: "todo.proto" });
 const client = new proto.myTodos.TodosService(

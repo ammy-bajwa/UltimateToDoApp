@@ -4,13 +4,13 @@ package myTodos; //Optional: unique package name.
 
 //Service. define the methods that the grpc server can expose to the client.
 service TodosService {
-  rpc Insert (Todo) returns (Empty);
-  rpc List (Empty) returns (TodoList);
+  // rpc Insert (Todo) returns (Empty);
+  // rpc List (Empty) returns (TodoList);
   rpc Update (Todo) returns (Empty);
   rpc Remove (TodoId) returns (Empty);
 }
 
-// Message Type definition for an Employee.
+// Message Type definition for an Todos.
 message Todo {
   int32 todo_id = 1;
   string title = 2;
