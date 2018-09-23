@@ -6,7 +6,6 @@ package myTodos; //Optional: unique package name.
 service TodosService {
   rpc List (Empty) returns (TodoList);
   rpc Insert (Todo) returns (Empty);
-  rpc Get (TodoId) returns (TodoList);
   rpc Remove (TodoId) returns (Empty);
   rpc Update (Todo) returns (Empty);
 }
