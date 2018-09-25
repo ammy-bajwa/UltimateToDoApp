@@ -56,7 +56,7 @@ export class DB {
     let title = body.title;
     let description = body.description;
     var id = _id;
-    let done = false;  
+    let done = true;  
     let values = [id,title,description,done];   
     let result = await pool.connect()
     .then((db) => {

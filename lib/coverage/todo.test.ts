@@ -21,8 +21,8 @@ describe("api/todos", () => {
     todoId = uuid();
     todoItem = {
       id: todoId,
-      title: "Buy Some Milk",
-      description: "Some Description: buy from Hassan dairy",
+      title:"This is my title",
+      description:"This is my description",
       done: true
     };
     todo = pool.connect((err,db,done)=>{
@@ -35,7 +35,7 @@ describe("api/todos", () => {
 
   // GET endpoint tests
   describe("GET api/todos", () => {
-    it("Should return 200 OK", async () => {
+    it("Return 200 OK", async () => {
       let result = await request(server).get("/api/todos");
       expect(result.status).toBe(200);
     });
@@ -44,7 +44,30 @@ describe("api/todos", () => {
 
   // POST endpoint tests
   describe("POST api/todos", () => {
-    it("Should return 200 OK", async () => {
+
+    it("Return 400 error if description not define", async () => {
+      let result = await request(server)
+        .post("/api/todos")
+        .send({
+          id: todoId,
+          title: "title",
+          done: true
+        });
+      expect(result.status).toBe(400);
+    });
+
+    it("Return 400 error if title not define", async () => {
+      let result = await request(server)
+        .post("/api/todos")
+        .send({
+          id: todoId,
+          description: "description",
+          done: true
+        });
+      expect(result.status).toBe(400);
+    });
+
+    it("Return 200 OK", async () => {
       let result = await request(server)
         .post("/api/todos")
         .send(todoItem);
@@ -54,7 +77,7 @@ describe("api/todos", () => {
 
   // PUT endpoint tests
   describe("PUT api/todos/:id", () => {
-    it("Should return 200 OK on Update", async () => {
+    it("Return 200 OK on Update", async () => {
       let result = await request(server)
         .put(`/api/todos/${todoId}`)
         .send({ done: true });
@@ -64,7 +87,7 @@ describe("api/todos", () => {
 
   //DELETE endpoint tests
   describe("DELETE api/todos/:id", () => {
-    it("Should return 200 OK on Delete", async () => {
+    it("Return 200 OK on Delete", async () => {
       let result = await request(server).delete(`/api/todos/${todoId}`);
       expect(result.status).toBe(200);
     });
