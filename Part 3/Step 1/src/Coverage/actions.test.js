@@ -1,7 +1,6 @@
 import { getTodos, postTodo, updateTodos, deleteTodos } from "../actions";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import {database} from "../actions";
 import uuid from "uuid";
 
 const createMockStore = configureMockStore([thunk]);
