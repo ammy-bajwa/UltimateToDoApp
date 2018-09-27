@@ -1,5 +1,6 @@
 let todoModel = require("../models/todo");
-let Todo = class {
+let Todo =
+ class {
   constructor(payload) {
     this.payload = payload;
   }
