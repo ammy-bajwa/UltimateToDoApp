@@ -2,6 +2,12 @@
 Build  a  UI  Component  based  Todo  Client  App  using  the  TDD  Approach 
 by Mohsin Latif
 
+To run just type this command
+npm run start
+
+And for test just run
+npm run test
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

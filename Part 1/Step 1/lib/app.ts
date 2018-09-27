@@ -2,13 +2,13 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as mongoose from "mongoose";
 import { Routes } from "./routes/todoRoutes";
+const config = require("./config/config");
 
 class App {
   public app: express.Application;
   public todoRoute: Routes = new Routes();
 
-  public mongoUrl: string =
-    "mongodb://admin:Mohsin60@ds257732.mlab.com:57732/todo-api";
+  public mongoUrl: string = config.dbUrl;
 
   constructor() {
     this.app = express();
@@ -36,14 +36,7 @@ class App {
 
   private mongoSetup(): void {
     mongoose.Promise = global.Promise;
-    mongoose
-      .connect(process.env.MONGODB_URI || this.mongoUrl)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    mongoose.connect(process.env.MONGODB_URI || this.mongoUrl);
   }
 }
 

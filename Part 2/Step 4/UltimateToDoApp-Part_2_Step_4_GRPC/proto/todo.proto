@@ -12,7 +12,7 @@ service TodosService {
 
 // Message Type definition for an Todo.
 message Todo {
-  int32 todo_id = 1;
+  int32 id = 1;
   string title = 2;
   string description = 3;
   bool done = 4;
@@ -23,7 +23,7 @@ message TodoList {
 }
 
 message TodoId {
-  int32 todo_id = 1;
+  int32 id = 1;
 }
 
 message Empty {}

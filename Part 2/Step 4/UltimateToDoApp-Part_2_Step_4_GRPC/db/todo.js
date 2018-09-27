@@ -4,7 +4,7 @@ let Todo = class {
     this.payload = payload;
   }
 
-  static list(cb) {
+  static list(callBack) {
     const criteria = {};
     const projections = {
       _id: 0,
@@ -13,39 +13,20 @@ let Todo = class {
     const options = {
       lean: true
     };
-    todoModel.find(criteria, projections, options, cb);
+    todoModel.find(criteria, projections, options, callBack);
   }
 
-  add(cb) {
-    new todoModel(this.payload).save(cb);
+  add(callBack) {
+    new todoModel(this.payload).save(callBack);
   }
-
-  fetch(cb) {
-    const criteria = this.payload.criteria;
-    const projections = this.payload.projections;
-    const options = this.payload.options;
-    todoModel.find(criteria, projections, options, cb);
-  }
-
-  remove(cb) {
+  remove(object, callBack) {
     const criteria = this.payload;
     // console.log("in remove method cb", cb, " criteria ", criteria);
-    todoModel
-      .findOneAndRemove(cb)
-      .then(res => {
-        // console.log("findOneAndRemove ", res);
-      })
-      .catch(err => console.log("findOneAndDelete err ", err));
+    todoModel.findOneAndRemove(cb, callBack);
   }
-  updateTodo(cb) {
+  updateTodo(object, callBack) {
     const criteria = this.payload;
-    console.log('update Todo ',cb);
-    todoModel
-      .findOneAndUpdate({id:cb.id},cb)
-      .then(res => {
-        console.log("findOneAndRemove ", res);
-      })
-      .catch(err => console.log("findOneAndDelete err ", err));
+    todoModel.findOneAndUpdate({ id: object.id }, { $set: object }, callBack);
   }
 };
 module.exports = Todo;

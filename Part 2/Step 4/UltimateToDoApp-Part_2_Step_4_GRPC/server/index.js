@@ -16,23 +16,7 @@ server.addService(proto.myTodos.TodosService.service, {
       description: call.request.description,
       done: call.request.done,
     });
-    todo.add(call.request);
-  },
-  get(call, callback) {
-    let payload = {
-      criteria: {
-        id: call.request.id
-      },
-      projections: {
-        _id: 0,
-        __v: 0
-      },
-      options: {
-        lean: true
-      }
-    };
-    let todo = new todoServices(payload);
-    todo.fetch(callback);
+    todo.add(callback);
   },
   remove(callback) {
     const criteria = {
@@ -41,12 +25,12 @@ server.addService(proto.myTodos.TodosService.service, {
     let todo = new todoServices(criteria);
     todo.remove(criteria, callback);
   },
-  update(callback) {
+  update(call,callback) {
     const criteria = {
-      id: callback.request.id,
-      title: callback.request.title,
-      description: callback.request.description,
-      done: callback.request.done,      
+      id: call.request.id,
+      title: call.request.title,
+      description: call.request.description,
+      done: call.request.done,      
     };
     let todo = new todoServices(criteria);
     todo.updateTodo(criteria, callback);

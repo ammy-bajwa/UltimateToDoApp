@@ -3,6 +3,11 @@
 Build  a  Simple  in  Memory  Todo  Client  App  using  the  TDD  Approach 
 By Mohsin Latif
 
+To run just type this command
+npm run start
+
+And for test just run
+npm run test
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

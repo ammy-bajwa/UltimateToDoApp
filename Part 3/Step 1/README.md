@@ -1,6 +1,12 @@
 AppBuild a Simple Realtime Todo Client App using the TDD Approach
 
-By Hassan Ali, Hassan Naseer and Amir Sadiq Ali
+By Hassan Ali, Hassan Naseer and Amir Sadiq 
+
+To run just type this command
+npm run start
+
+And for test just run
+npm run test
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
