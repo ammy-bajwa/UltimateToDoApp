@@ -3,37 +3,27 @@ import {
   GET_TODOS,
   POST_TODO,
   DELETE_TODO,
-  UPDATE_TODO
+  UPDATE_TODO,
+  GET_ERRORS
 } from "./types";
-import { add, remove, update } from "./indexdb";
-
-export const getTodos = payload => {
-  return {
-    type: GET_TODOS,
-    payload
-  };
+import { add, remove, update, get } from "./indexdb";
+import uuid from "uuid";
+export const getTodos = () => dispatch => {
+  get(dispatch);
 };
 
-export const postTodo = payload => {
-  add(payload);
-  return {
-    type: POST_TODO,
-    payload
+export const postTodo = formData => dispatch => {
+  let todo = {
+    ...formData,
+    _id: uuid(),
+    done: false
   };
+  add(todo, dispatch);
+};
+export const deleteTodos = _id => dispatch => {
+  remove(_id, dispatch);
 };
 
-export const deleteTodos = id => {
-  remove(id);
-  return {
-    type: DELETE_TODO,
-    id
-  };
-};
-
-export const updateTodos = payload => {
-  update(payload);
-  return {
-    type: UPDATE_TODO,
-    payload
-  };
+export const updateTodos = (payload, _id) => dispatch => {
+  update(_id, dispatch);
 };

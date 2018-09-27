@@ -10,11 +10,8 @@ describe("Todos Actions", () => {
   });
 
   it("Should Update the Todo", () => {
-    const result = updateTodos({ payload: {}, type: "UPDATE_TODO" });
-    expect(result).toEqual({
-      payload: { payload: {}, type: "UPDATE_TODO" },
-      type: "UPDATE_TODO"
-    });
+    const result = updateTodos(true, "123");
+    expect(result).toEqual({ type: "UPDATE_TODO", id: "123", payload: true });
   });
 
   it("Should Add a new Todo", () => {

@@ -18,13 +18,13 @@ class CheckboxList extends React.Component {
 
     return (
       <div className={classes.root}>
-        {this.props.todos.map((item,i) => (
-          <div key={i}>
+        {this.props.todos.map(item => (
+          <div key={item._id}>
             <TodoItem
               title={item.title}
               description={item.description}
               done={item.done}
-              id={item.id}
+              _id={item._id}
             />
           </div>
         ))}

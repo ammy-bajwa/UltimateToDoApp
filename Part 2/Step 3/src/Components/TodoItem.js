@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
@@ -82,18 +81,12 @@ class TodoItem extends React.Component {
     this.setState({ open: false });
   };
   handleDelete = () => {
-    this.props.dispatch(deleteTodos(this.props.id));
+    this.props.dispatch(deleteTodos(this.props._id));
+    console.log(this.props._id);
     this.setState({ open: false });
   };
   handleCheck = () => {
-    console.log(this.props);
-    let todo = {
-      id: this.props.id,
-      title: this.props.title,
-      description: this.props.description,
-      done: !this.props.done
-    };
-    this.props.dispatch(updateTodos(todo));
+    this.props.dispatch(updateTodos(!this.props.done, this.props._id));
   };
   render() {
     const props = this.props;
@@ -108,12 +101,12 @@ class TodoItem extends React.Component {
                 component="h3"
                 className={classes.typographyHeader}
               >
-                <span className={props.done && classes.disabled}>
+                <span className={props.done ? classes.disabled : undefined}>
                   {props.title}
                 </span>
               </Typography>
               <Typography component="p" className={classes.typographyPara}>
-                <span className={props.done && classes.disabled}>
+                <span className={props.done ? classes.disabled : undefined}>
                   {props.description}
                 </span>
               </Typography>

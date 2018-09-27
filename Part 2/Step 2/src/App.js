@@ -5,7 +5,6 @@ import List from "./Components/TodosList";
 import Header from "./Components/Header";
 
 import { postTodo } from "./actions";
-// import logo from './logo.svg';
 import "./App.css";
 
 class App extends Component {
